@@ -1,0 +1,286 @@
+# 数据结构练习
+- 学号：2017211130
+- 姓名：陈政瑞
+
+### T 15
+```cpp
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+
+struct Tree
+{
+	char data;
+	Tree *lchild;
+	Tree *rchild;
+};
+
+Tree* Init_tree() {
+	char ch;
+	scanf("%c", &ch);
+	if(ch == '0') return nullptr;
+	Tree* ptree;
+	ptree = new Tree;
+	ptree -> data = ch;
+	ptree -> lchild = Init_tree();
+	ptree -> rchild = Init_tree();
+	return ptree;
+}
+
+bool Find_commom_ancestor(char q, char p, Tree* ptree, Tree* &ansestor) {
+	int l,r;
+	if(ptree == nullptr) return 0;
+	if(ptree -> data == p || ptree -> data == q) return 1;
+	l = Find_commom_ancestor(q,p,ptree -> lchild, ansestor);
+	r = Find_commom_ancestor(q,p,ptree -> rchild, ansestor);
+	if(l && r && ansestor == nullptr) {
+		ansestor = ptree;
+		return 0;
+	}
+	if(l || r) return 1;
+	return 0;
+}
+
+void Print_tree(Tree* ptree, int level) {
+	if(ptree -> rchild != nullptr) {
+		Print_tree(ptree -> rchild, level+1);
+	}
+
+	for(int i = 0; i < level; i++) printf("    ");
+	printf("%c\n", ptree -> data);
+
+	if(ptree -> lchild != nullptr) {
+		Print_tree(ptree -> lchild, level+1);
+	}
+}
+
+//ABD00EG00H00C0FI00JK000
+
+int main() {
+	Tree* root = Init_tree();
+	getchar();
+	char p = 'D', q = 'H';
+//	char p,q;
+//	scanf("%c%c",&p,&q);
+	printf("%c%c\n",p,q);
+	Print_tree(root,0);
+	Tree* ansestor = NULL;
+	Find_commom_ancestor(p,q,root,ansestor);
+	printf("The ancestor is %c\n", ansestor != NULL? ansestor -> data : '!');
+	return 0;
+}
+```
+
+
+### T 16
+```cpp
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <iostream>
+using namespace std;
+struct Tree
+{
+	char data;
+	Tree* lchild;
+	Tree* rchild;
+	int lh = 0;
+	int rh = 0;
+};
+
+Tree* Init_tree() {
+	char ch;
+	cin >> ch;
+	if(ch == '0') return nullptr;
+	Tree* ptree = new Tree;
+	ptree -> data = ch;
+	ptree -> lchild = Init_tree();
+	ptree -> rchild = Init_tree();
+	return ptree;
+}
+
+int Height_tree(Tree* ptree) {
+	int i;
+	for(i = 0; i <= 1; i++) {
+		if(i == 0 && ptree -> lchild != nullptr)
+			ptree -> lh = 1 + Height_tree(ptree -> lchild);
+		if(i == 1 && ptree -> rchild != nullptr)
+			ptree -> rh = 1 + Height_tree(ptree -> rchild);
+	}
+	return ptree -> lh > ptree -> rh ? ptree -> lh : ptree -> rh;
+}
+
+//ABD00EG00H00C0FI00JK000
+
+int main() {
+	Tree* ptree = Init_tree();
+	int maxheight = Height_tree(ptree);
+	printf("The maxheight = %d\n", maxheight);
+	Tree* pnext = NULL;
+	while(ptree -> lchild != nullptr || ptree -> rchild != nullptr) {
+		printf("%c ", ptree -> data);
+		if(ptree -> lh > ptree -> rh) ptree = ptree -> lchild;
+		else ptree = ptree -> rchild;
+	}
+	return 0;
+}
+```
+
+### T 17
+```cpp
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
+
+struct Tree
+{
+	char data;
+	Tree* lchild;
+	Tree* rchild;
+};
+
+Tree* Init_tree() {
+	char ch;
+	scanf("%c", &ch);
+	if(ch == '0') return nullptr;
+	Tree* ptree = new Tree;
+	ptree -> data = ch;
+	ptree -> lchild = Init_tree();
+	ptree -> rchild = Init_tree();
+	return ptree;
+}
+
+bool is_alphabet(char ch) {
+	return (ch <= 122 && ch >= 97);
+}
+
+bool is_priority(char ch1, char ch2) {
+	if((ch1 == '*' || ch1 == '/') && (ch2 == '+' || ch2 == '-'))
+		return 1;
+	return 0;
+}
+
+void Cre_poly(Tree* ptree) {
+	if(is_alphabet(ptree -> data)) {
+		printf("%c", ptree -> data);
+		return;
+	}
+	if(is_priority(ptree -> data, ptree -> lchild -> data)) {
+		printf("(");
+		Cre_poly(ptree -> lchild);
+		printf(")");
+	}
+	else Cre_poly(ptree -> lchild);
+
+	printf("%c", ptree -> data);
+
+	if(is_priority(ptree -> data, ptree -> rchild -> data)) {
+		printf("(");
+		Cre_poly(ptree -> rchild);
+		printf(")");
+	}
+	else Cre_poly(ptree -> rchild);
+}
+
+//*+a00/b00-c00d00+e00f00
+int main() {
+	Tree* ptree = Init_tree();
+	Cre_poly(ptree);
+	return 0;
+}
+```
+
+### T 18
+
+```cpp
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+
+struct Tree
+{
+	char data;
+	Tree* lchild;
+	Tree* rchild;
+};
+
+Tree* Init_tree() {
+	Tree* ptree;
+	ptree = new Tree;
+	char ch;
+	scanf("%c", &ch);
+	if(ch == '#' || ch == ',' || ch == ')') {
+		ptree = nullptr;
+		return ptree;
+	}
+	ptree -> data = ch;
+	getchar();
+	ptree -> lchild = Init_tree();
+	getchar();
+	ptree -> rchild = Init_tree();
+	getchar();
+	return ptree;
+}
+
+void Print_tree(Tree* ptree, int level) {
+	if(ptree -> rchild != nullptr) {
+		Print_tree(ptree -> rchild, level+1);
+	}
+
+	for(int i = 0; i < level; i++) printf("    ");
+	printf("%c\n", ptree -> data);
+
+	if(ptree -> lchild != nullptr) {
+		Print_tree(ptree -> lchild, level+1);
+	}
+}
+//test data: A(B(D(#,#),#),C(E(#,#),F(#,#)))
+int main() {
+	Tree* ptree = Init_tree();
+	Print_tree(ptree, 0);
+	return 0;
+}
+```
+### T 19
+```cpp
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+
+struct Tree
+{
+	char data;
+	Tree* lchild;
+	Tree* rchild;
+};
+
+Tree* Init_tree() {
+	char ch;
+	scanf("%c", &ch);
+	if(ch == '0') return nullptr;
+	Tree* ptree = new Tree;
+	ptree -> data = ch;
+	ptree -> lchild = Init_tree();
+	ptree -> rchild = Init_tree();
+	return ptree;
+}
+
+void Print_tree(Tree* ptree, int level) {
+	if(ptree -> rchild != nullptr) {
+		Print_tree(ptree -> rchild, level+1);
+	}
+
+	for(int i = 0; i < level; i++) printf("    ");
+	printf("%c\n", ptree -> data);
+
+	if(ptree -> lchild != nullptr) {
+		Print_tree(ptree -> lchild, level+1);
+	}
+}
+//ABD000CE00F00
+int main() {
+	Tree* ptree = Init_tree();
+	Print_tree(ptree, 0);
+	return 0;
+}
+```
