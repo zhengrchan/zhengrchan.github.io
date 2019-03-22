@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://zrch.xyz/images/overfit.png">
 <meta property="og:image" content="http://zrch.xyz/images/regularize.png">
-<meta property="og:updated_time" content="2019-03-22T12:48:51.695Z">
+<meta property="og:updated_time" content="2019-03-22T15:02:20.369Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Note01 Curve Fitting of PRML Ch1">
 <meta name="twitter:description" content="OverviewWe will first introduce the traditional curve fitting problem, then we will implement these algorithms in python. Reference Pattern Recognition And Machine Learning ctgk/PRML   Curve Fitting P">
@@ -344,7 +344,7 @@ E(\mathbf{w}) = \frac{1}{2} \sum_{n=1}^N[w_0 + w_1 x_n + \cdots + w_M x_n^M - t_
 =\frac{1}{2}\sum_{n-1}^N \left(\sum_{j=0}^M x_n^j w_j - t_n\right)^2\\</script><p>Then we solve the derivative equation $\frac{\partial E(\mathbf{w})}{\partial w_i} = 0$</p>
 <script type="math/tex; mode=display">
     \sum_{n=1}^N \left(\sum_{j=0}^M x_n^j w_j - t_n\right)x_n^i = 0</script><script type="math/tex; mode=display">
-    \sum_{j=1}^M \left[\left(\sum_{n=1}^j x_n^{i+j}\right)w_j\right] = \sum_{n=1}^N x_n^i t_n</script><p>There are $(i-1)$ more equations like this, and we need to solve them all to get $W$. So we use $A<em>{ij} = \sum</em>{n=1}^N x<em>n^{i+j}$ and $T_i = \sum</em>{n=1}^N x<em>n^i t_n$ to simplify the equation. The $i</em>{th}$ equation looks like this:</p>
+    \sum_{j=1}^M \left[\left(\sum_{n=1}^j x_n^{i+j}\right)w_j\right] = \sum_{n=1}^N x_n^i t_n</script><p>There are $(i-1)$ more equations like this, and we need to solve them all to get $W$. So we use $A<em>{ij} = \sum</em>{n=1}^N x<em>n^{i+j}$  and  $T_i = \sum</em>{n=1}^N x<em>n^i t_n$ to simplify the equation. The $i</em>{th}$ equation looks like this:</p>
 <script type="math/tex; mode=display">
 \sum_{j=0}^M A_{ij} w_i = T_i</script><p>Combine $i$ quations and we get a matirx equation:</p>
 <script type="math/tex; mode=display">
