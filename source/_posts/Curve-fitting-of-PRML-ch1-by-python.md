@@ -8,7 +8,7 @@ tags: PRML, python
 
 We will first introduce the traditional curve fitting problem, then we will implement these algorithms in python.
 
-### TODO:(cankaoziliao)
+### Reference
 - Pattern Recognition And Machine Learning
 - [ctgk/PRML](https://github.com/ctgk/PRML)
 
@@ -32,7 +32,7 @@ But how can I know if the polynomial fits the pattern well?
 We use $E(\mathbf{w}) = \frac{1}{2} \sum_{n = 1}^N[y(x_n,\mathbf{w}) - t_n]^2$ to measure the misfit between $y(x,\mathbf{w})$ and real world data(training data).
 The $\frac{1}{2}$ is for computing convenience.
 
-We called the $E(\mathbf{w})$ _error function_. And our goal is to minimize it since the small value TODO:(xianshile) the polynomial and the data have small difference, thus the polynomial fits the real world well.
+We called the $E(\mathbf{w})$ _error function_. And our goal is to minimize it since the small value shown that the polynomial and the data have small difference, thus the polynomial fits the real world well.
 
 Then let's find out how to find a $\mathbf{w}$ to minimize the error function.
 
@@ -57,46 +57,46 @@ $$
 $$
 Combine $i$ quations and we get a matirx equation:
 $$
-    \begin{pmatrix}
+    \begin{bmatrix}
         A_{00} & \cdots & A_{0M} \\
         \vdots & & \vdots \\
         A_{M0} & \cdots & A_{MM}
-    \end{pmatrix}
-    \begin{pmatrix}
+    \end{bmatrix}
+    \begin{bmatrix}
         w_0 \\
         \vdots \\
         w_M
-    \end{pmatrix}
+    \end{bmatrix}
      = 
-    \begin{pmatrix}
+    \begin{bmatrix}
         x_1^0 & \cdots & x_n^0 \\
         \vdots & & \vdots \\
         x_1^M & \cdots & x_n^M
-    \end{pmatrix}
-    \begin{pmatrix}
+    \end{bmatrix}
+    \begin{bmatrix}
         t_1 \\
         \vdots\\
         t_n
-    \end{pmatrix}
+    \end{bmatrix}
 $$
 We notice that
 $$
-    \begin{pmatrix}
+    \begin{bmatrix}
         A_{00} & \cdots & A_{0M} \\
         \vdots & & \vdots \\
         A_{M0} & \cdots & A_{MM}
-    \end{pmatrix}
+    \end{bmatrix}
     = 
     X\cdot X^T
     \\
 $$
 $$
     X^T = 
-    \begin{pmatrix}
+    \begin{bmatrix}
         x_1^0 & \cdots & x_n^0 \\
         \vdots & & \vdots \\
         x_1^M & \cdots & x_n^M
-    \end{pmatrix}
+    \end{bmatrix}
 $$
 So we could just solve this equation to get the $\mathbf{w}$:
 $$
