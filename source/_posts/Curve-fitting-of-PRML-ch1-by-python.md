@@ -57,46 +57,46 @@ $$
 $$
 Combine $i$ quations and we get a matirx equation:
 $$
-    \begin{bmatrix}
+    \begin{pmatrix}
         A_{00} & \cdots & A_{0M} \\
         \vdots & & \vdots \\
         A_{M0} & \cdots & A_{MM}
-    \end{bmatrix}
-    \begin{bmatrix}
+    \end{pmatrix}
+    \begin{pmatrix}
         w_0 \\
         \vdots \\
         w_M
-    \end{bmatrix}
+    \end{pmatrix}
      = 
-    \begin{bmatrix}
+    \begin{pmatrix}
         x_1^0 & \cdots & x_n^0 \\
         \vdots & & \vdots \\
         x_1^M & \cdots & x_n^M
-    \end{bmatrix}
-    \begin{bmatrix}
+    \end{pmatrix}
+    \begin{pmatrix}
         t_1 \\
         \vdots\\
         t_n
-    \end{bmatrix}
+    \end{pmatrix}
 $$
 We notice that
 $$
-    \begin{bmatrix}
+    \begin{pmatrix}
         A_{00} & \cdots & A_{0M} \\
         \vdots & & \vdots \\
         A_{M0} & \cdots & A_{MM}
-    \end{bmatrix}
+    \end{pmatrix}
     = 
     X\cdot X^T
     \\
 $$
 $$
     X^T = 
-    \begin{bmatrix}
+    \begin{pmatrix}
         x_1^0 & \cdots & x_n^0 \\
         \vdots & & \vdots \\
         x_1^M & \cdots & x_n^M
-    \end{bmatrix}
+    \end{pmatrix}
 $$
 So we could just solve this equation to get the $\mathbf{w}$:
 $$
