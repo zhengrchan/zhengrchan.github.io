@@ -324,7 +324,7 @@
         
           
             <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>We will first introduce the traditional curve fitting problem, then we will implement these algorithms in python.</p>
-<h3 id="TODO-cankaoziliao"><a href="#TODO-cankaoziliao" class="headerlink" title="TODO:(cankaoziliao)"></a>TODO:(cankaoziliao)</h3><ul>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
 <li>Pattern Recognition And Machine Learning</li>
 <li><a href="https://github.com/ctgk/PRML" target="_blank" rel="noopener">ctgk/PRML</a></li>
 </ul>
@@ -337,7 +337,7 @@
 <p>Our aim is to find the inner pattern to make precisely pridiction of $t$ given a new input $x$.<br>We represent the pattern by </p>
 <script type="math/tex; mode=display">y(x, \mathbf{w}) = w_0 + w_1 x + w_2 x^2 +\cdots + w_Mx^M  = \sum_{j = 0}^M w_j x^j</script><p>where $M$ is the order of the polynomial and we use $\mathbf{w} = (w_0, w_1, \cdots w_M)$ to represent the set of $w_i$.<br><a name="overfitting">Sooner</a> we will find the bigger of $M$, the more accurate the curve of polynomial $y(x,\mathbf{w})$ fits the given observation data.</p>
 <p>But how can I know if the polynomial fits the pattern well?<br>We use $E(\mathbf{w}) = \frac{1}{2} \sum_{n = 1}^N[y(x_n,\mathbf{w}) - t_n]^2$ to measure the misfit between $y(x,\mathbf{w})$ and real world data(training data).<br>The $\frac{1}{2}$ is for computing convenience.</p>
-<p>We called the $E(\mathbf{w})$ <em>error function</em>. And our goal is to minimize it since the small value TODO:(xianshile) the polynomial and the data have small difference, thus the polynomial fits the real world well.</p>
+<p>We called the $E(\mathbf{w})$ <em>error function</em>. And our goal is to minimize it since the small value shown that the polynomial and the data have small difference, thus the polynomial fits the real world well.</p>
 <p>Then let’s find out how to find a $\mathbf{w}$ to minimize the error function.</p>
 <h3 id="Solve-The-Euqation"><a href="#Solve-The-Euqation" class="headerlink" title="Solve The Euqation"></a>Solve The Euqation</h3><script type="math/tex; mode=display">
 E(\mathbf{w}) = \frac{1}{2} \sum_{n=1}^N[w_0 + w_1 x_n + \cdots + w_M x_n^M - t_n]^2\\

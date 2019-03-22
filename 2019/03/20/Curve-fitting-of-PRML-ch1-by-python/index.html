@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="OverviewWe will first introduce the traditional curve fitting problem, then we will implement these algorithms in python. TODO:(cankaoziliao) Pattern Recognition And Machine Learning ctgk/PRML   Curve">
+<meta name="description" content="OverviewWe will first introduce the traditional curve fitting problem, then we will implement these algorithms in python. Reference Pattern Recognition And Machine Learning ctgk/PRML   Curve Fitting P">
 <meta name="keywords" content="PRML, python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Note01 Curve Fitting of PRML Ch1">
 <meta property="og:url" content="http://zrch.xyz/2019/03/20/Curve-fitting-of-PRML-ch1-by-python/index.html">
 <meta property="og:site_name" content="zrch&#39;s blog">
-<meta property="og:description" content="OverviewWe will first introduce the traditional curve fitting problem, then we will implement these algorithms in python. TODO:(cankaoziliao) Pattern Recognition And Machine Learning ctgk/PRML   Curve">
+<meta property="og:description" content="OverviewWe will first introduce the traditional curve fitting problem, then we will implement these algorithms in python. Reference Pattern Recognition And Machine Learning ctgk/PRML   Curve Fitting P">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://zrch.xyz/images/overfit.png">
 <meta property="og:image" content="http://zrch.xyz/images/regularize.png">
-<meta property="og:updated_time" content="2019-03-22T12:37:17.566Z">
+<meta property="og:updated_time" content="2019-03-22T12:43:49.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Note01 Curve Fitting of PRML Ch1">
-<meta name="twitter:description" content="OverviewWe will first introduce the traditional curve fitting problem, then we will implement these algorithms in python. TODO:(cankaoziliao) Pattern Recognition And Machine Learning ctgk/PRML   Curve">
+<meta name="twitter:description" content="OverviewWe will first introduce the traditional curve fitting problem, then we will implement these algorithms in python. Reference Pattern Recognition And Machine Learning ctgk/PRML   Curve Fitting P">
 <meta name="twitter:image" content="http://zrch.xyz/images/overfit.png">
 
 
@@ -324,7 +324,7 @@
 
       
         <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>We will first introduce the traditional curve fitting problem, then we will implement these algorithms in python.</p>
-<h3 id="TODO-cankaoziliao"><a href="#TODO-cankaoziliao" class="headerlink" title="TODO:(cankaoziliao)"></a>TODO:(cankaoziliao)</h3><ul>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
 <li>Pattern Recognition And Machine Learning</li>
 <li><a href="https://github.com/ctgk/PRML" target="_blank" rel="noopener">ctgk/PRML</a></li>
 </ul>
@@ -337,7 +337,7 @@
 <p>Our aim is to find the inner pattern to make precisely pridiction of $t$ given a new input $x$.<br>We represent the pattern by </p>
 <script type="math/tex; mode=display">y(x, \mathbf{w}) = w_0 + w_1 x + w_2 x^2 +\cdots + w_Mx^M  = \sum_{j = 0}^M w_j x^j</script><p>where $M$ is the order of the polynomial and we use $\mathbf{w} = (w_0, w_1, \cdots w_M)$ to represent the set of $w_i$.<br><a name="overfitting">Sooner</a> we will find the bigger of $M$, the more accurate the curve of polynomial $y(x,\mathbf{w})$ fits the given observation data.</p>
 <p>But how can I know if the polynomial fits the pattern well?<br>We use $E(\mathbf{w}) = \frac{1}{2} \sum_{n = 1}^N[y(x_n,\mathbf{w}) - t_n]^2$ to measure the misfit between $y(x,\mathbf{w})$ and real world data(training data).<br>The $\frac{1}{2}$ is for computing convenience.</p>
-<p>We called the $E(\mathbf{w})$ <em>error function</em>. And our goal is to minimize it since the small value TODO:(xianshile) the polynomial and the data have small difference, thus the polynomial fits the real world well.</p>
+<p>We called the $E(\mathbf{w})$ <em>error function</em>. And our goal is to minimize it since the small value shown that the polynomial and the data have small difference, thus the polynomial fits the real world well.</p>
 <p>Then let’s find out how to find a $\mathbf{w}$ to minimize the error function.</p>
 <h3 id="Solve-The-Euqation"><a href="#Solve-The-Euqation" class="headerlink" title="Solve The Euqation"></a>Solve The Euqation</h3><script type="math/tex; mode=display">
 E(\mathbf{w}) = \frac{1}{2} \sum_{n=1}^N[w_0 + w_1 x_n + \cdots + w_M x_n^M - t_n]^2\\
@@ -574,7 +574,7 @@ E(\mathbf{w}) = \frac{1}{2} \sum_{n=1}^N[w_0 + w_1 x_n + \cdots + w_M x_n^M - t_
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TODO-cankaoziliao"><span class="nav-number">1.1.</span> <span class="nav-text">TODO:(cankaoziliao)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Curve-Fitting-Problem"><span class="nav-number">2.</span> <span class="nav-text">Curve Fitting Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduce"><span class="nav-number">2.1.</span> <span class="nav-text">Introduce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solve-The-Euqation"><span class="nav-number">2.2.</span> <span class="nav-text">Solve The Euqation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Overfitting-And-Regularization"><span class="nav-number">2.3.</span> <span class="nav-text">Overfitting And Regularization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Regularized-Curve-Fitting-In-Python"><span class="nav-number">2.4.</span> <span class="nav-text">Regularized Curve Fitting In Python</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-number">1.1.</span> <span class="nav-text">Reference</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Curve-Fitting-Problem"><span class="nav-number">2.</span> <span class="nav-text">Curve Fitting Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduce"><span class="nav-number">2.1.</span> <span class="nav-text">Introduce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solve-The-Euqation"><span class="nav-number">2.2.</span> <span class="nav-text">Solve The Euqation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Overfitting-And-Regularization"><span class="nav-number">2.3.</span> <span class="nav-text">Overfitting And Regularization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Regularized-Curve-Fitting-In-Python"><span class="nav-number">2.4.</span> <span class="nav-text">Regularized Curve Fitting In Python</span></a></li></ol></li></ol></div>
             
 
           </div>
