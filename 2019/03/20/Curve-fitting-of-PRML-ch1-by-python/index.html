@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://zrch.xyz/images/overfit.png">
 <meta property="og:image" content="http://zrch.xyz/images/regularize.png">
-<meta property="og:updated_time" content="2019-03-22T12:43:49.505Z">
+<meta property="og:updated_time" content="2019-03-22T12:48:51.695Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Note01 Curve Fitting of PRML Ch1">
 <meta name="twitter:description" content="OverviewWe will first introduce the traditional curve fitting problem, then we will implement these algorithms in python. Reference Pattern Recognition And Machine Learning ctgk/PRML   Curve Fitting P">
@@ -781,6 +781,26 @@ E(\mathbf{w}) = \frac{1}{2} \sum_{n=1}^N[w_0 + w_1 x_n + \cdots + w_M x_n^M - t_
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
